@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.sub-container {
+    margin-right: 100px;
+}
+
+.sub-container .image {
+    width: 250px; 
+    transform: rotate(-15deg); 
+}
+
+.text {
+    color: #EDF2F4; 
+    font-weight: bold;
+    font-family: 'Helvetica';
+    text-align: center;
+    font-size: 35px;
+}
