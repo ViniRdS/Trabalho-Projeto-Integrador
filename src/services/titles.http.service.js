@@ -50,7 +50,6 @@ const searchTitles = async (searchValue) => {
     }
 };
 
-export { searchTitles };
 
 // Exporta a função newTitle para que possa ser utilizada em outros arquivos
-export { newTitle };
+export { newTitle, searchTitles };

@@ -1,23 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import { searchTitles } from '../services/titles.http.service';
 
 export default function SearchResultsPage() {
     const { searchQuery } = useParams();
     const [searchResults, setSearchResults] = useState([]);
+    const location = useLocation();
 
     useEffect(() => {
-        const fetchSearchResults = async () => {
-            try {
-                const results = await searchTitles(decodeURIComponent(searchQuery));
-                setSearchResults(results);
-            } catch (error) {
-                console.error('Erro ao buscar resultados:', error);
-            }
-        };
+        const searchParams = new URLSearchParams(location.search);
+        const results = JSON.parse(decodeURIComponent(searchParams.get('results')));
+        setSearchResults(results);
+    }, [location.search]); // Agora depende da string de busca, que inclui o parâmetro 'key'
 
-        fetchSearchResults();
-    }, [searchQuery]); 
 
     return (
         <div>

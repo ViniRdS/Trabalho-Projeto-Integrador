@@ -7,20 +7,23 @@ import '../assets/css/header.css';
 
 // Definindo o componente Header como uma função de componente de React
 export default function Header() {
-    const [searchQuery, setSearchQuery] = useState(''); // Estado para armazenar o termo de pesquisa
-    const navigate = useNavigate(); // Hook useNavigate para navegação programática
+    const [searchQuery, setSearchQuery] = useState('');
+    const [searchKey, setSearchKey] = useState(Date.now());
+    const navigate = useNavigate();
 
     const handleSearch = async (e) => {
         e.preventDefault();
+        setSearchKey(Date.now()); // Atualiza o searchKey com um novo valor
         try {
             const results = await searchTitles(searchQuery);
-            console.log(results);
-            // Redirecionar para a página de resultados de pesquisa com o termo de pesquisa como parâmetro de rota
-            navigate(`/search-results/${searchQuery}`);
+            const encodedResults = encodeURIComponent(JSON.stringify(results));
+            navigate(`/search-results/${searchQuery}?results=${encodedResults}&key=${searchKey}`);
         } catch (error) {
             console.error('Erro ao buscar resultados:', error);
         }
     };
+
+    
 
     return (
         <header className="header">
