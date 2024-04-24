@@ -1,0 +1,15 @@
+.txt{
+    color: #EDF2F4;
+    font-family: 'Helvetica';
+    font-weight: bold;
+}
+
+.titulos{
+    width: 238.5px;
+    height: 350.2px;
+}
+
+#nomeTitulo{
+    font-size: 16px;
+    padding-top: 5px;
+}
