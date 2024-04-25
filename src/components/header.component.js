@@ -28,7 +28,7 @@ export default function Header() {
     return (
         <header className="header">
             <div className="container">
-                <h1>
+                <h1 onClick={()=>navigate(`/`)}>
                     <span style={{ color: '#D90429', fontSize: '25px', fontWeight: 'bold' }}>BUSCA</span>
                     <span style={{ color: '#EDF2F4', fontSize: '25px', fontWeight: 'bold' }}>FLIX</span>
                 </h1>
