@@ -23,7 +23,10 @@ export default function Header() {
         }
     };
 
-    
+    // Função para redirecionar para a rota de login
+    const handleEntrarClick = () => {
+        navigate('/login');
+    };
 
     return (
         <header className="header">
@@ -46,7 +49,8 @@ export default function Header() {
                         </button>
                     </form>
                 </div>
-                <button className="enter-button">Entrar</button>
+                {/* Botão "Entrar" com evento onClick */}
+                <button className="enter-button" onClick={handleEntrarClick}>Entrar</button>
             </div>
         </header>
     );

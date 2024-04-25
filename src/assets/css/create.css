@@ -1,0 +1,60 @@
+/* Estilo para o componente de Cadastro */
+.cadastro-container {
+    text-align: center;
+    font-family: Helvetica, Arial, sans-serif; /* Define a fonte Helvetica */
+
+  }
+  
+  .cadastro-container h2 {
+    padding: 10px;
+    color: white; /* Cor branca para o título "Criar Conta" */
+    font-size: 60px;
+    margin-top: 150px;
+
+  }
+  
+  .cadastro-container form {
+    margin-top: -10px;
+  }
+  
+  .cadastro-container input[type="text"],
+  .cadastro-container input[type="email"],
+  .cadastro-container input[type="password"] {
+    width: 750px;
+    padding: 5px;
+    margin: 15px 0;
+    border-radius: 15px; /* Cantos arredondados para os campos de entrada */
+    border: 1px solid #ccc;
+  }
+  
+  /* Estilize o placeholder para diminuir o tamanho da fonte */
+  .cadastro-container input[type="text"]::placeholder,
+  .cadastro-container input[type="email"]::placeholder,
+  .cadastro-container input[type="password"]::placeholder {
+    font-size: 15px; /* Tamanho da fonte do placeholder */
+    padding-left: 15px
+  }
+  
+ .cadastro-container p {
+  color: #D90429; /* Cor vermelha para o texto "Já tem uma conta?" */
+  margin-top: -10px;
+  font-size: 15px; /* Define o tamanho da fonte para menor */
+  text-align: left; /* Alinha o texto à esquerda */
+  margin-left: 5px; /* Adiciona margem à esquerda para aproximar do campo de senha */
+}
+  
+  .cadastro-container a {
+    color: white; /* Cor branca para o link "Entrar" */
+    text-decoration: none; /* Remove sublinhado do link */
+  }
+  
+  .cadastro-container button[type="submit"] {
+    background-color: #D90429; /* Botão vermelho */
+    color: white;
+    padding: 10px 90px;
+    border: none;
+    border-radius: 15px; /* Cantos arredondados para o botão */
+    cursor: pointer;
+    margin-top: 20px; /* Aumenta a margem superior do botão */
+  }
+  
