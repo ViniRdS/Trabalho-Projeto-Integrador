@@ -1,0 +1,120 @@
+.container-detail{
+    background-Color: #3C3F5B;
+    color: #EDF2F4;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Heveltica";
+}
+.sub-container-detail{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 90%;
+    height: 90%;
+    background-Color: #2B2D42;
+    border-radius: 30px;
+}
+.sinopse{
+    background-Color: #3C3F5B;
+    border-radius: 20px;
+    padding: 15px;
+    font-family: "Helvetica";
+}
+
+.title-sinopse {
+    font-weight: bold;
+    margin-bottom: 3px;
+    font-size: 20px;
+}
+.sinopse p{
+    font-size: 17px;
+    font-weight: lighter;
+    line-height: 1.2;
+    text-align: justify;
+}
+.detail img{
+    border-radius: 30px;
+    margin-right: 10px;
+    width: 250px;
+    height: 370px;
+    margin-bottom: 10px;
+}
+.stream{
+    background-color: #EDF2F4;
+    border-radius: 20px;
+    height: 70px;
+    width: 90px;
+    margin: 5px;
+}
+.stream img{
+    height: 68px;
+    width: 75px;
+    padding: 5px;
+    margin-left: 7px;
+}
+.stream div{
+    background-color: #8d99ae84;
+    border-radius: 15px;
+    margin: 10px;
+    
+}
+.stream div h6{
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 7px;
+    padding: 2px;
+}
+.stream-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin: 15px;
+}
+.detail {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 5px;
+    text-align: left;
+    gap: 10px;
+}
+.title-stream{
+    border-top: 3px solid #8D99AE;
+    margin-top: 30px;
+    padding-top: 15px;
+}
+.title-stream h2{
+    font-weight: bold;
+    margin-left: 20px;
+}
+.title-detail{
+    font-weight: bold;
+    margin-left: 16px;
+    font-family: "Helvetica";
+    color: #EDF2F4;
+}
+.duracao, .genero {
+    color: '#8D99AE';
+    font-family: 'Helvetica';
+    font-size: 16px;
+    margin: 15px;
+    text-align: center;
+}
+
+.duracao span{
+    font-weight: bold;
+    margin-left: 10px;
+}
+.genero span{
+    font-weight: bold;
+    margin-left: 10px;
+}
+.title-stream-h6{
+    font-family: "Helvetica";
+    font-size: 26px;
+}

@@ -1,6 +1,6 @@
 // URL base da API e chave de autenticação
 const urlApi = "https://api.watchmode.com/v1";
-const keyApi = "apiKey=4od6XZPwlq0gBCh6gzZd0APr0ojhrl22iCusiGeF";
+const keyApi = "apiKey=97yfmdD8AG9u5fifZMR9XJ5RQsZIFcAYhsoXe6ZG";
 
 // Função assíncrona newTitle para buscar novos lançamentos
 const newTitle = async () => {
@@ -32,7 +32,7 @@ const searchTitles = async (searchValue) => {
         // Verifique se searchValue não é undefined antes de construir a URL
         if (searchValue !== undefined) {
             console.log(encodeURIComponent(searchValue));
-            const response = await fetch(`${urlApi}/autocomplete-search/?${keyApi}&search_value=${encodeURIComponent(searchValue)}&search_type=1`);
+            const response = await fetch(`${urlApi}/autocomplete-search/?${keyApi}&search_value=${encodeURIComponent(searchValue)}&search_type=1&types=tv,movie`);
             //console.log(encodeURIComponent(searchValue));
             if (!response.ok) {
                 throw new Error('Erro ao buscar resultados');
@@ -50,6 +50,33 @@ const searchTitles = async (searchValue) => {
     }
 };
 
+// Função busca os detalhes dos filmes
+const detailTitle = async (idTitulo) => {
+    try {
+        const response = await fetch(`${urlApi}/title/${idTitulo}/details/?${keyApi}&language=pt&append_to_response=sources`)
+        if (!response.ok) {
+            throw new Error("Erro na busca dos detalhes do titulo")
+        }
+        const data = await response.json()
+        return data
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+//Função para buscar todos os streaming dos titulos
+const streaming = async () => {
+    try {
+        const response = await fetch(`${urlApi}/sources/?${keyApi}&regions=BR`)
+        if (!response.ok) {
+            throw new Error("Erro na busca dos streaming")
+        }
+        const data = await response.json()
+        return data
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 // Exporta a função newTitle para que possa ser utilizada em outros arquivos
-export { newTitle, searchTitles };
+export { newTitle, searchTitles, detailTitle, streaming };

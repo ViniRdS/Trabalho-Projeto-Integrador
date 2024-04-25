@@ -1,5 +1,6 @@
-// Importando React Hooks necessários para o componente
+// Importando React Hooks e useNavigate necessários para o componente
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 // Importando a função newTitle do serviço titles.http.service
 import { newTitle } from "../services/titles.http.service";
@@ -19,6 +20,9 @@ export default function NewTitle() {
     // Quantidade de títulos a serem exibidos
     const displayCount = 7;
 
+    // Hook useNavigate para navegação programática
+    const navigate = useNavigate();
+
     // Função para rolar para a esquerda na lista de títulos
     const scrollLeft = () => {
         setStart(oldStart => oldStart > 0 ? oldStart - 1 : oldStart);
@@ -36,6 +40,11 @@ export default function NewTitle() {
         });
     }, []);
 
+    // Função para lidar com o clique na imagem do filme
+    const handleMovieClick = (id) => {
+        navigate(`/detail/${id}`);
+    };
+
     // Retorno do componente
     return (
         <div className="new-titles-container">
@@ -49,11 +58,12 @@ export default function NewTitle() {
                     {/* Contêiner para os títulos */}
                     <div className="titles-container">
                         {/* Mapeamento e exibição dos títulos */}
-                        {titles.slice(start, start + displayCount).map((title, index) => (
-                            <div key={index} className="title-thumbnail">
+                        {titles && titles.slice(start, start + displayCount).map((title, index) => (
+                            <div key={index} className="title-thumbnail" onClick={() => handleMovieClick(title.id)}>
                                 <img src={title.poster_url} alt={title.title} />
                             </div>
                         ))}
+
                     </div>
                     {/* Botão para rolar para a direita */}
                     <button className="scroll-btn right-btn" onClick={scrollRight} disabled={start >= titles.length - displayCount}>

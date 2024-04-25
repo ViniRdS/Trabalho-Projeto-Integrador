@@ -10,8 +10,6 @@ export default function SearchResultsPage() {
     return (
         // Utilizando um Fragment do React para envolver os componentes sem adicionar elementos extras ao DOM
         <React.Fragment>
-            {/* Renderiza o componente Header */}
-            <Header/>
             {/* Renderiza o componente Search */}
             <Search/>
         </React.Fragment>
