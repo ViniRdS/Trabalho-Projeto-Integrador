@@ -1,14 +1,16 @@
 /* Estilo para o componente de Login */
 .login-container {
     text-align: center;
-    font-family: Helvetica, Arial, sans-serif; /* Define a fonte Helvetica */
+    font-family: Helvetica; /* Define a fonte Helvetica */
+  
   }
   
   .login-container h2 {
     padding: 10px;
-    color: white; /* Cor branca para o título "Login" */
-    font-size: 60px;
-    margin-top: 150px;
+    color: #EDF2F4; 
+    font-size: 45px;
+    margin-top: 70px;
+    font-weight: bold;
   }
   
   .login-container form {
@@ -17,8 +19,8 @@
   
   .login-container input[type="text"],
   .login-container input[type="password"] {
-    width: 750px;
-    padding: 5px;
+    width: 550px;
+    padding: 10px;
     margin: 15px 0;
     border-radius: 15px; /* Cantos arredondados para os campos de entrada */
     border: 1px solid #ccc;
@@ -33,22 +35,23 @@
   
   .login-container p {
     color: #D90429; /* Cor vermelha para o texto "Não tem uma conta?" */
-    margin-top: -125px;
+    margin-top: -112px;
     font-size: 15px; /* Define o tamanho da fonte para menor */
     text-align: left; /* Alinha o texto à esquerda */
-    margin-left: 5px; /* Adiciona margem à esquerda para aproximar do campo de senha */
+    margin-left: 15px; /* Adiciona margem à esquerda para aproximar do campo de senha */
+    font-weight: bold;
   }
   
   .login-container a {
-    color: white; /* Cor branca para o link "Criar conta" */
+    color: #EDF2F4;  /* Cor branca para o link "Criar conta" */
     text-decoration: none; /* Remove sublinhado do link */
   }
   
   /* Ajuste a margem superior do botão para movê-lo mais para baixo */
   .login-container button[type="submit"] {
     background-color: #D90429; /* Botão vermelho */
-    color: white;
-    padding: 10px 90px;
+    color: #EDF2F4; 
+    padding: 12px 70px;
     border: none;
     border-radius: 15px; /* Cantos arredondados para o botão */
     cursor: pointer;

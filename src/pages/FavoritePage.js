@@ -1,7 +1,7 @@
 import React from 'react';
-import FavoriteComp from '../components/favoritecomp.component'
+import FavoriteComp from '../components/favorite.component'
 
-export default function Favorite(){
+export default function FavoritePage(){
 
   return(
     <React.Fragment>

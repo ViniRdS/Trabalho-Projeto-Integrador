@@ -29,7 +29,8 @@
     flex: 0 0 auto;
     width: 150px;
     padding: 8px;
-    overflow: hidden; 
+    overflow: hidden;
+    cursor: pointer; 
 }
 
 .title-thumbnail img {
