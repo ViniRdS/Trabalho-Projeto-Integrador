@@ -7,7 +7,7 @@ import Search from './components/search.component.js';
 import DetailPage from './pages/DetailPage.js';
 import Login from './pages/login.js'; // Importe o componente Login
 import Cadastro from './pages/cadastro.js'; // Importe o componente Cadastro
-
+import Favorite from './pages/Favorite'; // Importe o componente Favorite
 
 function App() {
     return (
@@ -20,6 +20,8 @@ function App() {
                     <Route path="/detail/:id" element={<DetailPage/>} /> {/* Rota de detalhe dos titulos*/}
                     <Route path="/login" element={<Login />} /> {/* Adicione a rota para o Login */}
                     <Route path="/cadastro" element={<Cadastro />} /> {/* Adicione a rota para o Cadastro */}
+                    <Route path="/favorite" element={<Favorite />} /> {/* Adicione a rota para o Favorito */}
+                 
                 </Routes>
             </Router>
         </div>
