@@ -60,14 +60,14 @@
 .results h6 span{
     font-weight: normal;
 }
-.stream{
+.streamer{
     background-color: #EDF2F4;
     border-radius: 20px;
     height: 150px;
     width: 200px;
     margin: 5px;
 }
-.stream img{
+.streamer img{
     height: 150px;
     width: 170px;
     padding: 5px;

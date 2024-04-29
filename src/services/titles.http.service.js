@@ -27,22 +27,23 @@ const newTitle = async () => {
     }
 }
 
+// Função assíncrona searchTitles para buscar títulos com base em um valor de pesquisa
 const searchTitles = async (searchValue) => {
     try {
-        // Verifique se searchValue não é undefined antes de construir a URL
+        // Verifica se searchValue não é undefined antes de construir a URL
         if (searchValue !== undefined) {
-            console.log(encodeURIComponent(searchValue));
+            // Realiza uma chamada fetch para a API com a URL e a chave de autenticação, incluindo o valor de pesquisa
             const response = await fetch(`${urlApi}/autocomplete-search/?${keyApi}&search_value=${encodeURIComponent(searchValue)}&search_type=1&types=tv,movie`);
-            //console.log(encodeURIComponent(searchValue));
+            
             if (!response.ok) {
                 throw new Error('Erro ao buscar resultados');
             }
+            // Converte a resposta para JSON
             const data = await response.json();
             return data.results;
         } else {
             console.log("Deu undefined")
             return []; // Retorna uma matriz vazia se searchValue for undefined
-            
         }
     } catch (error) {
         console.error('Erro:', error);
@@ -50,13 +51,15 @@ const searchTitles = async (searchValue) => {
     }
 };
 
-// Função busca os detalhes dos filmes
+// Função assíncrona detailTitle para buscar detalhes de um título específico
 const detailTitle = async (idTitulo) => {
     try {
+        // Realiza uma chamada fetch para a API com a URL e a chave de autenticação, incluindo o ID do título
         const response = await fetch(`${urlApi}/title/${idTitulo}/details/?${keyApi}&language=pt&append_to_response=sources`)
         if (!response.ok) {
             throw new Error("Erro na busca dos detalhes do titulo")
         }
+        // Converte a resposta para JSON
         const data = await response.json()
         return data
     } catch (error) {
@@ -64,13 +67,15 @@ const detailTitle = async (idTitulo) => {
     }
 }
 
-//Função para buscar todos os streaming dos titulos
+// Função assíncrona streaming para buscar informações sobre os serviços de streaming disponíveis
 const streaming = async () => {
     try {
+        // Realiza uma chamada fetch para a API com a URL e a chave de autenticação, incluindo a região
         const response = await fetch(`${urlApi}/sources/?${keyApi}&regions=BR`)
         if (!response.ok) {
             throw new Error("Erro na busca dos streaming")
         }
+        // Converte a resposta para JSON
         const data = await response.json()
         return data
     } catch (error) {
@@ -78,5 +83,5 @@ const streaming = async () => {
     }
 }
 
-// Exporta a função newTitle para que possa ser utilizada em outros arquivos
+// Exporta as funções para que possam ser utilizadas em outros arquivos
 export { newTitle, searchTitles, detailTitle, streaming };

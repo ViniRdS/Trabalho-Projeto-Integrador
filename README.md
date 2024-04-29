@@ -3,3 +3,7 @@
 
 🎨 [Link do Figma](https://www.figma.com/file/CWflDrVtWpkLVJi9OKfo0T/Buscaflix?type=design&node-id=0%3A1&mode=design&t=o6FnsL07w2bXpzdH-1)
 
+👨‍💻 [Link da API](https://github.com/AndriFarias/api_buscaflix_express_projeto_integrador)
+
+
+

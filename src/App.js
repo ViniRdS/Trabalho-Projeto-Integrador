@@ -3,11 +3,11 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from './components/header.component.js';
 import Home from './pages/HomePage.js';
-import Search from './components/search.component.js';
+import SearchResultsPage from './pages/SearchResultsPage.js';
 import DetailPage from './pages/DetailPage.js';
-import Login from './pages/login.js'; // Importe o componente Login
-import Cadastro from './pages/cadastro.js'; // Importe o componente Cadastro
-import Favorite from './pages/Favorite'; // Importe o componente Favorite
+import LoginPage from './pages/LoginPage.js'; // Importe o componente Login
+import CadastroPage from './pages/CadastroPage.js'; // Importe o componente Cadastro
+import FavoritePage from './pages/FavoritePage.js'; // Importe o componente Favorito
 
 function App() {
     return (
@@ -16,11 +16,11 @@ function App() {
                 <Header />
                 <Routes>
                     <Route path="/" element={<Home/>} />
-                    <Route path="/search-results/:query" element={<Search />} /> {/* Nova rota para os resultados da pesquisa */}
+                    <Route path="/search-results/:query" element={<SearchResultsPage/>} /> {/* Nova rota para os resultados da pesquisa */}
                     <Route path="/detail/:id" element={<DetailPage/>} /> {/* Rota de detalhe dos titulos*/}
-                    <Route path="/login" element={<Login />} /> {/* Adicione a rota para o Login */}
-                    <Route path="/cadastro" element={<Cadastro />} /> {/* Adicione a rota para o Cadastro */}
-                    <Route path="/favorite" element={<Favorite />} /> {/* Adicione a rota para o Favorito */}
+                    <Route path="/login" element={<LoginPage/>} /> {/* Adicione a rota para o Login */}
+                    <Route path="/cadastro" element={<CadastroPage />} /> {/* Adicione a rota para o Cadastro */}
+                    <Route path="/favorite" element={<FavoritePage />} /> {/* Adicione a rota para o Favorito */}
                  
                 </Routes>
             </Router>
