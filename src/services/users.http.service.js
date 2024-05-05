@@ -68,5 +68,68 @@ const cadastrar = async (username, email, password) => {
   }
 }
 
+const getFavoriteId = async () => {
+  try {
+    const id = localStorage.getItem('id');
+    const response = await fetch(`${urlApi}/favorites/user/${id}`);
+    if (!response.ok) {
+        throw new Error("Erro na busca dos favoritos");
+    }
+    
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+const saveFavorite = async (movie) => {
+  try {
+    const id = localStorage.getItem('id');
+    const stream = movie.sources.map(source => source.name);
+    const newMovie = { ...movie, sources: stream };
+
+    const response = await fetch(`${urlApi}/favorites`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        idFilme: newMovie.id,
+        urlFoto: newMovie.poster,
+        title: newMovie.title,
+        sources: newMovie.sources,
+        usuario: id
+      })
+    });
+
+
+    const data = await response.json();
+  
+    return data;
+  } catch (error) {
+    console.error('Erro ao cadastrar:', error.message);
+    throw new Error('Erro ao cadastrar: ' + error.message);
+  }
+}
+
+
+const deleteFavorite = async (id) => {
+  try {
+    const response = await fetch(`${urlApi}/favorites/${id}`,{
+      method: 'DELETE'});
+    if (!response.ok) {
+        throw new Error("Erro ao deletar os favoritos")
+    }
+    
+    const data = await response.json();
+    return data;
+} catch (error) {
+    console.log(error);
+}
+}
+
+
 // Exporta as funções para que possam ser utilizadas em outros arquivos
-export { login, cadastrar };
+export { login, cadastrar, getFavoriteId, saveFavorite, deleteFavorite};

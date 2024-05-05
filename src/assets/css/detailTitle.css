@@ -98,7 +98,9 @@
     margin-left: 16px;
     font-family: "Helvetica";
     color: #EDF2F4;
+    margin-top: 20px;
 }
+
 .duracao, .genero {
     color: '#8D99AE';
     font-family: 'Helvetica';
@@ -118,4 +120,8 @@
 .title-stream-h6{
     font-family: "Helvetica";
     font-size: 26px;
+}
+.title-button{
+    display: flex;
+    justify-content: space-between;
 }

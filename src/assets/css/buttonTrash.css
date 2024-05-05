@@ -1,0 +1,14 @@
+.trash-button {
+    border: 2px;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    background-color: red;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.trash-button:hover{
+    transform: scale(1.1);
+}

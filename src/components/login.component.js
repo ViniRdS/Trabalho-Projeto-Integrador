@@ -24,6 +24,7 @@ export default function Login() {
       const response = await login(formData.username, formData.password);
       const token = response.token; // Obtém o token de autenticação da resposta
       localStorage.setItem('token', token); // Armazena o token no localStorage para manter o usuário autenticado
+      localStorage.setItem('id', response.id)
       // Atualiza o estado com a mensagem de sucesso e limpa a mensagem de erro
       setFormData({ ...formData, successMessage: "Logado com Sucesso!", errorMessage: '' });
       // Redireciona para a página inicial após um pequeno intervalo

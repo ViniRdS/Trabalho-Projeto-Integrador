@@ -23,6 +23,7 @@
     border-radius: 30px;
     padding: 20px;
     justify-content: center;
+    
 }
 
 .title-thumbnail {
@@ -44,6 +45,12 @@
     text-align: center;
 }
 
+.title-thumbnail:hover{
+    transform: scale(1.02);
+    box-shadow: 0 0 10px black;
+    margin: 3px;
+}
+
 .carousel-container {
     display: flex;
     align-items: center;
@@ -57,6 +64,7 @@
     flex-wrap: nowrap;
     overflow: auto;
     width: 100%; 
+
 }
 
 .scroll-btn {

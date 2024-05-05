@@ -20,6 +20,7 @@
 .titulos img{
     border-radius: 5px;
 }
+
 .container-search{
     background-Color: #3C3F5B;
     color: #EDF2F4;
@@ -51,4 +52,8 @@
 .col {
     flex: 1 0 10%; /* O valor após 0 é a largura mínima do filme. Ajuste conforme necessário */
     margin: 0.1em 0.5em; /* Espaçamento ao redor de cada filme. Ajuste conforme necessário */
+}
+
+.titulos:hover{
+    transform: scale(1.05);
 }

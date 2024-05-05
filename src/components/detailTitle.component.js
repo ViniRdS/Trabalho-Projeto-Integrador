@@ -7,6 +7,8 @@ import { detailTitle, streaming } from '../services/titles.http.service';
 // Importando os estilos CSS para o componente DetailTitle
 import '../assets/css/detailTitle.css';
 import { Film, ClockFill } from 'react-bootstrap-icons';
+import ButtonFavorite from './buttonFavorite.component';
+import '../assets/css/buttonFavorite.css';
 
 // Definindo o componente DetailTitle como uma função de componente de React
 export default function DetailTitle() {
@@ -87,9 +89,12 @@ export default function DetailTitle() {
                         )}
                     </div>
                     <div className='details'>
+                        <div className='title-button'>
                         {title && title.title && (
                             <h2 className='title-detail'>{title.title}</h2>
                         )}
+                        <ButtonFavorite className='favorite-button' data={title}/>
+                        </div>
                         <div className='sinopse'>
                             <h3 className='title-sinopse'>Sinopse: </h3>
                             {title && title.plot_overview && (
