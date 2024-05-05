@@ -30,6 +30,7 @@ export default function ButtonLogin() {
     if (isLoggedIn) {
       // Se estiver autenticado, faz logout
       localStorage.removeItem('token'); // Remove o token do localStorage
+      localStorage.removeItem('id')
       setIsLoggedIn(false); // Atualiza o estado para refletir que o usuário não está mais autenticado
       navigate('/'); // Redireciona para a página inicial após o logout
     } else {

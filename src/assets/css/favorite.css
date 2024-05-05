@@ -22,12 +22,15 @@
 .favorite-title {
     margin: auto;
     padding: 20px;
-    width: 70%;
+    width: auto;
     background-color: #3C3F5B;
     border-radius: 30px;
     height: auto;
     margin-right: 5%;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 
@@ -86,4 +89,17 @@
     font-size: 18px;
     padding: 15px;
     padding-bottom: 5px;
+}
+.favorite-img img{
+    border-radius: 5px;
+}
+.favorite-img:hover img{
+    border-radius: 5px;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px black;
+}
+.favorite-movie{
+    margin: auto;
+    padding: 20px;
+    position: relative;
 }

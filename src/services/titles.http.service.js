@@ -1,6 +1,6 @@
 // URL base da API e chave de autenticação
 const urlApi = "https://api.watchmode.com/v1";
-const keyApi = "apiKey=97yfmdD8AG9u5fifZMR9XJ5RQsZIFcAYhsoXe6ZG";
+const keyApi = "apiKey=P6Jg9BdlM85xwmXJTyEmgdpRE43PNx3OTv4gPBkG";
 
 // Função assíncrona newTitle para buscar novos lançamentos
 const newTitle = async () => {
