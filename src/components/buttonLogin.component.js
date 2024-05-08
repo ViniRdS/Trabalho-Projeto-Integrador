@@ -1,48 +1,62 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Importa o hook useNavigate para navegação
-import '../assets/css/buttonLogin.css'; // Importa o estilo CSS do botão
+import { useNavigate } from 'react-router-dom';
+import { FaHeart, FaSignOutAlt } from 'react-icons/fa'; // Importa os ícones do React Icons
+import '../assets/css/buttonLogin.css';
+import { PersonCircle } from 'react-bootstrap-icons';
+import '../assets/css/dropdown.css'; // Importa o arquivo CSS do dropdown
 
 export default function ButtonLogin() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para controlar se o usuário está autenticado
-  const navigate = useNavigate(); // Inicializa o hook useNavigate para navegação
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+  const navigate = useNavigate();
 
-  // Função para verificar se o usuário está autenticado
   const checkAuthentication = () => {
-    const token = localStorage.getItem('token'); // Obtém o token do localStorage
-    setIsLoggedIn(!!token); // Define o estado isLoggedIn com base na presença do token
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token);
   };
 
-  // Efeito useEffect para verificar a autenticação inicial e configurar um intervalo para verificação contínua
   useEffect(() => {
-    // Verifica a autenticação inicialmente
     checkAuthentication();
-    // Configura um intervalo para verificar a autenticação continuamente
     const intervalId = setInterval(() => {
       checkAuthentication();
-    }, 1000); // Verifica a cada 1 segundo
-
-    // Limpa o intervalo ao desmontar o componente para evitar vazamento de memória
+    }, 1000);
     return () => clearInterval(intervalId);
-  }, []); // Executa apenas uma vez ao montar o componente
+  }, []);
 
-  // Função para lidar com o clique no botão
-  const handleEntrarClick = () => {
-    if (isLoggedIn) {
-      // Se estiver autenticado, faz logout
-      localStorage.removeItem('token'); // Remove o token do localStorage
-      localStorage.removeItem('id')
-      setIsLoggedIn(false); // Atualiza o estado para refletir que o usuário não está mais autenticado
-      navigate('/'); // Redireciona para a página inicial após o logout
-    } else {
-      // Se não estiver autenticado, redireciona para a página de login
-      navigate('/login');
-    }
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
+    navigate('/');
   };
 
-  // Renderiza o botão com o texto "Entrar" se não estiver autenticado, ou "Logout" se estiver autenticado
+  const handleMouseEnter = () => {
+    setDropdownVisible(true);
+  };
+
+  const handleMouseLeave = () => {
+    setDropdownVisible(false);
+  };
+
   return (
-    <button className="enter-button" onClick={handleEntrarClick}>
-      {isLoggedIn ? 'Logout' : 'Entrar'}
-    </button>
+    <div className="user-dropdown">
+      <div className="button-group"> {/* Adicionando um wrapper para os botões */}
+        {isLoggedIn ? (
+          <div className="dropdown" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            <button className="dropbtn"><PersonCircle size={20} color='#EDF2F4'/> Perfil</button>
+            {dropdownVisible && (
+              <div className="dropdown-content">
+                <a href="/favorite"><FaHeart className="icon" /> Favoritos</a>
+                <a href="#" onClick={handleLogout}><FaSignOutAlt className="icon" /> Logout</a>
+              </div>
+            )}
+          </div>
+        ) : (
+          <button className="enter-button" onClick={() => navigate('/login')}>
+            Entrar
+          </button>
+        )}
+        <div className="space"></div> {/* Adicionando um espaço entre os botões */}
+      </div>
+    </div>
   );
 }

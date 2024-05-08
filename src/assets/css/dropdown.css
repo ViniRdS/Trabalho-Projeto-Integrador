@@ -1,0 +1,77 @@
+/* Estilo para o container dos botões */
+.button-group {
+    display: flex;
+    align-items: center; /* Centraliza os itens verticalmente */
+    
+}
+
+/* Estilo para os botões */
+.dropbtn,
+.favorite-btn {
+    background-color: #8d99ae76;
+    border: none;
+    color: white;
+    padding: 8px 18px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 12px;
+    
+   
+}
+
+
+
+/* Estilo para o container do dropdown */
+.dropdown {
+    position: relative;
+    
+}
+
+/* Estilo para as opções do dropdown */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0);
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    
+}
+
+/* Estilo para as opções do dropdown */
+.dropdown-content a {
+    background-color: #8d99ae76;
+    color: white;
+    padding: 8px 18px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    font-size: 15px; /*muda tamanho da fonte escrita */
+    margin-right: 10px
+
+   
+}
+
+/* Estilo para os links ao passar o mouse sobre eles */
+.dropdown-content a:hover {
+    background-color: #757575;
+    
+}
+
+/* Mostrar o dropdown quando o mouse passar sobre o botão */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Estilo para o ícone */
+.dropdown-content a .icon {
+    margin-right: 5px;
+    
+}
+
+.dropbtn{
+    width: 120px;
+}
