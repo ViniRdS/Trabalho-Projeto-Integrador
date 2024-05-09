@@ -30,6 +30,74 @@ export default function FavoriteComp() {
         }
     };
 
+    const platformsMap = {
+        "Netflix": "Netflix",
+        "MAX Free": "MAX",
+        "MAX":"MAX",
+        "Prime Video": "Amazon",
+        "Amazon": "Amazon",
+        "Disney+": "Disney+",
+        "AppleTV+": "AppleTV",
+        "AppleTV": "AppleTV",
+        "Paramount Plus": "Paramount Plus",
+        "Crunchyroll Premium": "Crunchyroll Premium",
+        "Clarovideo": "Clarovideo",
+        "Curiosity Stream": "Curiosity Stream",
+        "Globoplay": "Globoplay",
+        "MUBI": "MUBI",
+        "Pluto TV": "Pluto TV",
+        "Star+": "Star+",
+        "Sun Nxt": "Sun Nxt"
+    };
+
+    const countPlatforms = () => {
+        const platformCounts = {};
+        favorite.forEach((movie) => {
+            const countedPlatforms = {}; // Para rastrear quais plataformas já foram contadas neste filme
+            movie.sources.forEach((source) => {
+                let platform = platformsMap[source] || source;
+                if (platform === "MAX Free" || platform === "MAX") {
+                    platform = "MAX";
+                }
+                if (platform === "Prime Video" || platform === "Amazon") {
+                    if (!countedPlatforms["Amazon"]) {
+                        platformCounts["Amazon"] = (platformCounts["Amazon"] || 0) + 1;
+                        countedPlatforms["Amazon"] = true;
+                    }
+                } else {
+                    if (platform === "AppleTV+") {
+                        platform = "AppleTV";
+                    }
+                    if (platformsMap.hasOwnProperty(platform) && !countedPlatforms[platform]) {
+                        platformCounts[platform] = (platformCounts[platform] || 0) + 1;
+                        countedPlatforms[platform] = true; // Marca a plataforma como contada neste filme
+                    }
+                }
+            });
+        });
+        console.log("Platform Counts:", platformCounts);
+        return platformCounts;
+    };
+    
+    
+    const getPredominantPlatform = () => {
+        const platformCounts = countPlatforms();
+        console.log("Platform Counts:", platformCounts);
+        let predominantPlatform = "";
+        let maxCount = 0;
+        for (const platform in platformCounts) {
+            if (platformCounts[platform] > maxCount) {
+                maxCount = platformCounts[platform];
+                predominantPlatform = platform;
+            }
+        }
+        
+        console.log("Predominant Platform:", predominantPlatform);
+        return predominantPlatform;
+    };
+
+    const predominantPlatform = getPredominantPlatform();
+
     return (
         <div className='favorite'>
             <div className='content'>
@@ -39,16 +107,10 @@ export default function FavoriteComp() {
                         <h2>Análise</h2>
                         <div className='results'>
                             <h6>{favorite.length} Títulos na lista</h6>
-                            <h6>
-                                <ClockFill color="#2B2D42" size={20} className='mx-2'/>
-                                Tempo total: <span>15H 23M</span>
-                            </h6>
+                            <h6>{Object.keys(countPlatforms()).length} Plataformas</h6>
                         </div>
                         <div className='platform'>
-                            <h6>Plataforma Predominante: </h6>
-                            <div className='streamer'>
-                                <img src={'https://logodownload.org/wp-content/uploads/2024/03/max-logo-0.png'} alt={``} />
-                            </div>
+                            <h6>Plataforma Predominante: {predominantPlatform}</h6>
                         </div>
                     </div>
                     <div className='favorite-title'>
@@ -57,10 +119,8 @@ export default function FavoriteComp() {
                                 <div className="favorite-img" onClick={() => handleMovieClick(movie.idFilme)}>
                                     <img src={movie.urlFoto} alt={movie.title} />
                                 </div>
-                                {/* Botão para excluir o favorito */}
                                 <TrashButton
                                     onClick={() => handleFavoriteClick(movie._id)}
-                                     // Passa uma propriedade 'selected' para o botão
                                 />
                             </div>
                         ))}
