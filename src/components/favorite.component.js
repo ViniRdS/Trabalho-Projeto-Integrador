@@ -5,8 +5,17 @@ import { getFavoriteId, deleteFavorite } from '../services/users.http.service';
 import { useNavigate } from 'react-router-dom';
 import TrashButton from './trashButton.component';
 
+// Importe as imagens das plataformas
+import netflixImage from '../assets/images/netflix.png';
+import maxImage from '../assets/images/hbomax.png';
+import amazonImage from '../assets/images/primevideo.png';
+import paramountImage from '../assets/images/paramount.png';
+import disneyImage from '../assets/images/disney.png';
+import appleTVImage from '../assets/images/appletv.png';
+
 export default function FavoriteComp() {
     const [favorite, setFavorite] = useState([]);
+    const [predominantPlatform, setPredominantPlatform] = useState(""); // Inicialize com uma string vazia
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -14,6 +23,12 @@ export default function FavoriteComp() {
             await setFavorite(data);
         });
     }, []);
+
+    useEffect(() => {
+        const platformCounts = countPlatforms();
+        const predominantPlatform = getPredominantPlatform(platformCounts);
+        setPredominantPlatform(predominantPlatform);
+    }, [favorite]);
 
     const handleMovieClick = (id) => {
         navigate(`/detail/${id}`);
@@ -96,7 +111,16 @@ export default function FavoriteComp() {
         return predominantPlatform;
     };
 
-    const predominantPlatform = getPredominantPlatform();
+    //const predominantPlatform = getPredominantPlatform();
+
+    const platformImages = {
+        "Netflix": netflixImage,
+        "MAX": maxImage,
+        "Amazon": amazonImage,
+        "Paramount Plus": paramountImage,
+        "Disney+": disneyImage,
+        "AppleTV": appleTVImage
+    };
 
     return (
         <div className='favorite'>
@@ -110,7 +134,10 @@ export default function FavoriteComp() {
                             <h6>{Object.keys(countPlatforms()).length} Plataformas</h6>
                         </div>
                         <div className='platform'>
-                            <h6>Plataforma Predominante: {predominantPlatform}</h6>
+                                <h6>Plataforma Predominante:</h6>
+                                {/* Renderize a imagem da plataforma predominante */}
+                                <img src={platformImages[predominantPlatform]} alt={predominantPlatform} className='image' style={{ width: '250px', height: 'auto',objectFit: 'cover'}} />
+                                
                         </div>
                     </div>
                     <div className='favorite-title'>
