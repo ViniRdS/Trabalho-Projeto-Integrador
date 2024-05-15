@@ -136,8 +136,9 @@ export default function FavoriteComp() {
                         <div className='platform'>
                                 <h6>Plataforma Predominante:</h6>
                                 {/* Renderize a imagem da plataforma predominante */}
-                                <img src={platformImages[predominantPlatform]} alt={predominantPlatform} className='image' style={{ width: '250px', height: 'auto',objectFit: 'cover'}} />
-                                
+                                <div className='streamer'>
+                                            <img src={platformImages[predominantPlatform]} alt={predominantPlatform} />
+                                        </div>
                         </div>
                     </div>
                     <div className='favorite-title'>

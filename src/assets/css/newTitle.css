@@ -23,7 +23,6 @@
     border-radius: 30px;
     padding: 20px;
     justify-content: center;
-    
 }
 
 .title-thumbnail {
@@ -32,6 +31,7 @@
     padding: 8px;
     overflow: hidden;
     cursor: pointer; 
+    height: 230px;
 }
 
 .title-thumbnail img {
@@ -45,10 +45,11 @@
     text-align: center;
 }
 
-.title-thumbnail:hover{
+.title-thumbnail img:hover{
     transform: scale(1.02);
     box-shadow: 0 0 10px black;
     margin: 3px;
+    border-radius: 5px;
 }
 
 .carousel-container {
