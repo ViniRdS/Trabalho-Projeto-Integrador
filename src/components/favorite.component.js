@@ -6,12 +6,21 @@ import { useNavigate } from 'react-router-dom';
 import TrashButton from './trashButton.component';
 
 // Importe as imagens das plataformas
-import netflixImage from '../assets/images/netflix.png';
-import maxImage from '../assets/images/hbomax.png';
-import amazonImage from '../assets/images/primevideo.png';
-import paramountImage from '../assets/images/paramount.png';
-import disneyImage from '../assets/images/disney.png';
-import appleTVImage from '../assets/images/appletv.png';
+import netflixImage from '../assets/images/plataforma/netflix.png';
+import maxImage from '../assets/images/plataforma/hbomax.png';
+import amazonImage from '../assets/images/plataforma/primevideo.png';
+import paramountImage from '../assets/images/plataforma/paramount.png';
+import disneyImage from '../assets/images/plataforma/disney.png';
+import appleTVImage from '../assets/images/plataforma/appletv.png';
+import plutoTVImage from '../assets/images/plataforma/pluto-tv.png';
+import CrunchyrollImage from '../assets/images/plataforma/Crunchyroll.png';
+import ClaroImage from '../assets/images/plataforma/ClaroVideo.png';
+import CuriosityImage from '../assets/images/plataforma/CuriosityStream.png';
+import GloboImage from '../assets/images/plataforma/Globoplay.png';
+import MubiImage from '../assets/images/plataforma/MUBI-logo.png';
+import SunImage from '../assets/images/plataforma/sunnxt.png';
+import Nada from '../assets/images/plataforma/naosei.png';
+
 
 export default function FavoriteComp() {
     const [favorite, setFavorite] = useState([]);
@@ -119,7 +128,16 @@ export default function FavoriteComp() {
         "Amazon": amazonImage,
         "Paramount Plus": paramountImage,
         "Disney+": disneyImage,
-        "AppleTV": appleTVImage
+        "AppleTV": appleTVImage,
+        "Pluto TV":plutoTVImage,
+        "Crunchyroll Premium":CrunchyrollImage,
+        "Clarovideo":ClaroImage,
+        "Curiosity Stream":CuriosityImage,
+        "Globoplay":GloboImage,
+        "MUBI":MubiImage,
+        "Sun Nxt":SunImage
+
+
     };
 
     return (
@@ -134,12 +152,16 @@ export default function FavoriteComp() {
                             <h6>{Object.keys(countPlatforms()).length} Plataformas</h6>
                         </div>
                         <div className='platform'>
-                                <h6>Plataforma Predominante:</h6>
-                                {/* Renderize a imagem da plataforma predominante */}
-                                <div className='streamer'>
-                                            <img src={platformImages[predominantPlatform]} alt={predominantPlatform} />
-                                        </div>
+    <                       h6>Plataforma Predominante:</h6>
+                            <div className='streamer'>
+                                {favorite.length === 0 ? (
+                                    <img src={Nada} alt="Nenhum favorito" />
+                                    ) : (
+                                    <img src={platformImages[predominantPlatform]} alt={predominantPlatform} />
+                                 )}
+                            </div>
                         </div>
+
                     </div>
                     <div className='favorite-title'>
                         {favorite.map((movie) => (
