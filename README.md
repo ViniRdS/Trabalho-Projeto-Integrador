@@ -35,9 +35,8 @@ Nosso objetivo é fornecer aos usuários uma maneira eficaz e conveniente de enc
 ### Tecnologias Utilizadas 💻
 
 - **Frontend:** React.js
-- **Backend:** Node.js, Express
+- **Backend/API:** Node.js, Express
 - **Banco de Dados:** MongoDB Atlas
-- **Autenticação:** JWT (JSON Web Tokens)
 - **Estilização:** CSS, Bootstrap
 
 ### API de Busca de Filmes e Séries 🎥
