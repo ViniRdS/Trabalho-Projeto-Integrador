@@ -1,5 +1,4 @@
 import '../assets/css/favorite.css';
-import { ClockFill } from 'react-bootstrap-icons';
 import { useEffect, useState } from 'react';
 import { getFavoriteId, deleteFavorite } from '../services/users.http.service';
 import { useNavigate } from 'react-router-dom';
@@ -99,14 +98,10 @@ export default function FavoriteComp() {
                 }
             });
         });
-        console.log("Platform Counts:", platformCounts);
         return platformCounts;
     };
-    
-    
-    const getPredominantPlatform = () => {
-        const platformCounts = countPlatforms();
-        console.log("Platform Counts:", platformCounts);
+
+    const getPredominantPlatform = (platformCounts) => {
         let predominantPlatform = "";
         let maxCount = 0;
         for (const platform in platformCounts) {
@@ -115,12 +110,8 @@ export default function FavoriteComp() {
                 predominantPlatform = platform;
             }
         }
-        
-        console.log("Predominant Platform:", predominantPlatform);
         return predominantPlatform;
     };
-
-    //const predominantPlatform = getPredominantPlatform();
 
     const platformImages = {
         "Netflix": netflixImage,
@@ -129,15 +120,13 @@ export default function FavoriteComp() {
         "Paramount Plus": paramountImage,
         "Disney+": disneyImage,
         "AppleTV": appleTVImage,
-        "Pluto TV":plutoTVImage,
-        "Crunchyroll Premium":CrunchyrollImage,
-        "Clarovideo":ClaroImage,
-        "Curiosity Stream":CuriosityImage,
-        "Globoplay":GloboImage,
-        "MUBI":MubiImage,
-        "Sun Nxt":SunImage
-
-
+        "Pluto TV": plutoTVImage,
+        "Crunchyroll Premium": CrunchyrollImage,
+        "Clarovideo": ClaroImage,
+        "Curiosity Stream": CuriosityImage,
+        "Globoplay": GloboImage,
+        "MUBI": MubiImage,
+        "Sun Nxt": SunImage
     };
 
     return (
@@ -152,16 +141,19 @@ export default function FavoriteComp() {
                             <h6>{Object.keys(countPlatforms()).length} Plataformas</h6>
                         </div>
                         <div className='platform'>
-    <                       h6>Plataforma Predominante:</h6>
+                            <h6>Plataforma Predominante:</h6>
                             <div className='streamer'>
                                 {favorite.length === 0 ? (
                                     <img src={Nada} alt="Nenhum favorito" />
+                                ) : (
+                                    predominantPlatform ? (
+                                        <img src={platformImages[predominantPlatform]} alt={predominantPlatform} />
                                     ) : (
-                                    <img src={platformImages[predominantPlatform]} alt={predominantPlatform} />
-                                 )}
+                                        <img src={Nada} alt="Nenhum Streaming" />
+                                    )
+                                )}
                             </div>
                         </div>
-
                     </div>
                     <div className='favorite-title'>
                         {favorite.map((movie) => (

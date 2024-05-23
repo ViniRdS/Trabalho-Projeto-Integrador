@@ -25,6 +25,7 @@ export default function ButtonLogin() {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('id');
     setIsLoggedIn(false);
     navigate('/');
   };
