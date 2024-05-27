@@ -1,6 +1,6 @@
 // URL base da API e chave de autenticação
 const urlApi = "https://api.watchmode.com/v1";
-const keyApi = "apiKey=EXqnr8nni2QxomvAGZDvRyjypeX8UapdeJaPNsSU";
+const keyApi = "apiKey=FyJxgYA3GVQReJEwA3KqFZWjYGZY42fHygcObWlB";
 
 // Função assíncrona newTitle para buscar novos lançamentos
 const newTitle = async () => {
@@ -33,7 +33,7 @@ const searchTitles = async (searchValue) => {
         // Verifica se searchValue não é undefined antes de construir a URL
         if (searchValue !== undefined) {
             // Realiza uma chamada fetch para a API com a URL e a chave de autenticação, incluindo o valor de pesquisa
-            const response = await fetch(`${urlApi}/autocomplete-search/?${keyApi}&search_value=${encodeURIComponent(searchValue)}&search_type=1&types=tv,movie`);
+            const response = await fetch(`${urlApi}/autocomplete-search/?${keyApi}&search_value=${encodeURIComponent(searchValue)}&search_type=2`);
             
             if (!response.ok) {
                 throw new Error('Erro ao buscar resultados');
