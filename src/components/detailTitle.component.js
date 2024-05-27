@@ -9,13 +9,14 @@ import '../assets/css/detailTitle.css';
 import { Film, ClockFill } from 'react-bootstrap-icons';
 import ButtonFavorite from './buttonFavorite.component';
 import '../assets/css/buttonFavorite.css';
+import poster from '../assets/images/poster_placeholder.jpg';
 
 // Definindo o componente DetailTitle como uma função de componente de React
 export default function DetailTitle() {
     // Estado para armazenar os detalhes do título
-    const [title, setTitle] = useState({})
-    //State para armazenar os streaming
-    const [stream, setStream] = useState({})
+    const [title, setTitle] = useState({});
+    // Estado para armazenar os streaming
+    const [stream, setStream] = useState([]);
     // Usando o hook useParams para obter o ID do filme da URL
     const { id } = useParams();
 
@@ -23,7 +24,7 @@ export default function DetailTitle() {
     useEffect(() => {
         detailTitle(id).then(async (data) => {
             await setTitle(data);
-        })
+        });
         streaming().then(async (data) => {
             // Adicionando os preços aos serviços de streaming
             const streamingWithPrices = data.map(service => ({
@@ -50,8 +51,8 @@ export default function DetailTitle() {
             }));
 
             await setStream(streamingWithPrices);
-        })
-    }, [])
+        });
+    }, [id]);
 
     // Array para armazenar as fontes únicas
     const uniqueSources = [];
@@ -64,36 +65,43 @@ export default function DetailTitle() {
         }
     });
 
+    // Função para lidar com erro ao carregar a imagem
+    const handleImageError = (event) => {
+        event.target.src = poster;
+    };
+
     // Renderizando o componente
     return (
         <div className='container-detail'>
             <div className='sub-container-detail'>
                 <div className='detail'>
                     <div className='poster'>
-                        {title && title.poster && (
-                            <img src={title.poster} alt='Poster do titulo' />
-                        )}
+                        <img
+                            src={title.poster || poster}
+                            alt='Poster do titulo'
+                            onError={handleImageError}
+                        />
                         {title && title.genre_names && title.genre_names.length > 0 && (
                             <div>
                                 <p className='genero' style={{ color: '#8D99AE' }}>
-                                    <Film color="#EDF2F4" size={24} /> <span>Gênero: </span>  {title.genre_names ? title.genre_names.join(', ') : ''}
+                                    <Film color="#EDF2F4" size={24} /> <span>Gênero: </span>  {title.genre_names.join(', ')}
                                 </p>
                             </div>
                         )}
                         {title && title.runtime_minutes && (
                             <div>
                                 <p className='duracao' style={{ color: '#8D99AE' }}>
-                                    <ClockFill color="#EDF2F4" size={24} /> <span>Duração: </span> {title.runtime_minutes} {title.type === "tv_series" ? " Min por episodio" : " Min"}
+                                    <ClockFill color="#EDF2F4" size={24} /> <span>Duração: </span> {title.runtime_minutes} {title.type === "tv_series" ? " Min por episódio" : " Min"}
                                 </p>
                             </div>
                         )}
                     </div>
                     <div className='details'>
                         <div className='title-button'>
-                        {title && title.title && (
-                            <h2 className='title-detail'>{title.title}</h2>
-                        )}
-                        <ButtonFavorite className='favorite-button' data={title}/>
+                            {title && title.title && (
+                                <h2 className='title-detail'>{title.title}</h2>
+                            )}
+                            <ButtonFavorite className='favorite-button' data={title} />
                         </div>
                         <div className='sinopse'>
                             <h3 className='title-sinopse'>Sinopse: </h3>
@@ -119,19 +127,15 @@ export default function DetailTitle() {
                                                 <h6>{service.price}</h6>
                                             </div>
                                         </div>
-                                    )
+                                    );
                                 }
                                 // Se o serviço de streaming não estiver em stream, retorna null
                                 return null;
                             }) : <p>Nenhum serviço de streaming disponível para este título.</p>}
                         </div>
-
-
                     </div>
                 </div>
             </div>
         </div>
-    )
-
+    );
 }
-

@@ -10,6 +10,7 @@ import '../assets/css/newTitle.css';
 
 // Importando ícones da biblioteca react-bootstrap-icons
 import { ArrowLeftCircleFill, ArrowRightCircleFill } from 'react-bootstrap-icons';
+import poster from '../assets/images/poster_placeholder.jpg';
 
 // Definindo o componente NewTitle como uma função de componente de React
 export default function NewTitle() {
@@ -45,6 +46,11 @@ export default function NewTitle() {
         navigate(`/detail/${id}`);
     };
 
+    // Função para lidar com erro ao carregar a imagem
+    const handleImageError = (event) => {
+        event.target.src = poster;
+    };
+
     // Retorno do componente
     return (
         <div className="new-titles-container">
@@ -60,10 +66,13 @@ export default function NewTitle() {
                         {/* Mapeamento e exibição dos títulos */}
                         {titles && titles.slice(start, start + displayCount).map((title, index) => (
                             <div key={index} className="title-thumbnail" onClick={() => handleMovieClick(title.id)}>
-                                <img src={title.poster_url} alt={title.title} />
+                                <img
+                                    src={title.poster_url || poster}
+                                    alt={title.title}
+                                    onError={handleImageError}
+                                />
                             </div>
                         ))}
-
                     </div>
                     {/* Botão para rolar para a direita */}
                     <button className="scroll-btn right-btn" onClick={scrollRight} disabled={start >= titles.length - displayCount}>

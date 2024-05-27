@@ -19,6 +19,7 @@ import GloboImage from '../assets/images/plataforma/Globoplay.png';
 import MubiImage from '../assets/images/plataforma/MUBI-logo.png';
 import SunImage from '../assets/images/plataforma/sunnxt.png';
 import Nada from '../assets/images/plataforma/naosei.png';
+import poster from '../assets/images/poster_placeholder.jpg';
 
 
 export default function FavoriteComp() {
@@ -159,7 +160,7 @@ export default function FavoriteComp() {
                         {favorite.map((movie) => (
                             <div key={movie._id} className="favorite-movie">
                                 <div className="favorite-img" onClick={() => handleMovieClick(movie.idFilme)}>
-                                    <img src={movie.urlFoto} alt={movie.title} />
+                                    <img src={movie.urlFoto ? movie.urlFoto : poster} alt={movie.title} />
                                 </div>
                                 <TrashButton
                                     onClick={() => handleFavoriteClick(movie._id)}
